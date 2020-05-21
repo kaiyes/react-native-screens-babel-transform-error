@@ -3,8 +3,10 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native-web'
 
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 const Stack = createStackNavigator()
+const Tab = createBottomTabNavigator()
 
 function Home({ navigation: { navigate } }) {
   return (
@@ -26,13 +28,24 @@ function About({ navigation: { navigate } }) {
   )
 }
 
-export default function App() {
+function StackNav() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="About" component={About} />
       </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="About" component={About} />
+      </Tab.Navigator>
     </NavigationContainer>
   )
 }
